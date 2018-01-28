@@ -34,12 +34,15 @@ class BitmapEditor
   def color args
     x, y, color = args
 
-    if @bit_map[y.to_i-1].nil? || @bit_map[y.to_i-1].nil?
+    x = x.to_i - 1
+    y = y.to_i - 1
+
+    if @bit_map[y].nil? || @bit_map[y][x].nil?
       puts "bit #{x}X#{y} is out of range"
       return
     end
 
-    @bit_map[y.to_i-1][x.to_i-1] = color
+    @bit_map[y][x] = color
   end
 
   def clear args = []
