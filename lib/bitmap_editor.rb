@@ -17,6 +17,12 @@ class BitmapEditor
     File.open(file).each do |line|
       commands = line.chomp.split(/\s+/)
       command_method = commands.slice!(0)
+
+      if COMMANDS[command_method].nil?
+        puts 'unrecognised command :('
+        next
+      end
+
       send(COMMANDS[command_method], commands)
     end
   end
@@ -27,11 +33,17 @@ class BitmapEditor
 
   def color args
     x, y, color = args
+
+    if @bit_map[y.to_i-1].nil? || @bit_map[y.to_i-1].nil?
+      puts "bit #{x}X#{y} is out of range"
+      return
+    end
+
     @bit_map[y.to_i-1][x.to_i-1] = color
   end
 
   def clear args = []
-    init( [@bit_map.first.size, @bit_map.size] )
+    init( [@bit_map.first.size, @bit_map.size] ) unless @bit_map.nil?
   end
 
   def vertical args
@@ -45,6 +57,12 @@ class BitmapEditor
   end
 
   def show args = []
+
+    if @bit_map.nil?
+      puts "Run command 'I' before use command 'S'"
+      return
+    end
+
     puts "\n"
     @bit_map.each do |bits|
       puts bits.each { |bit| bit }.join(" ")
