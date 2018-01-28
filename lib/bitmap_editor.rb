@@ -28,4 +28,12 @@ class BitmapEditor
   def clear args = []
     init( [@bit_map.first.size, @bit_map.size] )
   end
+
+  def show args = []
+    puts "\n"
+    @bit_map.each do |bits|
+      puts bits.each { |bit| bit }.join(" ")
+    end
+  end
+
 end
