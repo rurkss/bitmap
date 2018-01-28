@@ -58,4 +58,20 @@ RSpec.describe BitmapEditor do
     end
   end
 
+  describe "#horizontal" do
+    context "command 'H'" do
+
+      it "set color 'Z' in row 3 between column 1 and 3" do
+        # O | O | O
+        # O | O | O
+        # Z | Z | Z
+        # O | O | O
+        # O | O | O
+        b_editor.horizontal([1,3,3,"Z"])
+        bitmap = subject.bit_map.flatten
+        expect(bitmap.each_index.select{|i| bitmap[i] == 'Z'}).to match_array([6,7,8])
+      end
+    end
+  end
+
 end
