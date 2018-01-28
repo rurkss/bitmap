@@ -26,5 +26,6 @@ class BitmapEditor
   end
 
   def clear args = []
+    init( [@bit_map.first.size, @bit_map.size] )
   end
 end
