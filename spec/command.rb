@@ -42,4 +42,20 @@ RSpec.describe BitmapEditor do
     end
   end
 
+  describe "#vertical" do
+    context "command 'V'" do
+
+      it "set color 'Z' in column 3 between rows 2 and 4" do
+        # O | O | O
+        # O | O | Z
+        # O | O | Z
+        # O | O | Z
+        # O | O | O
+        b_editor.vertical([3,2,4,"Z"])
+        bitmap = subject.bit_map.flatten
+        expect(bitmap.each_index.select{|i| bitmap[i] == 'Z'}).to match_array([5,8,11])
+      end
+    end
+  end
+
 end

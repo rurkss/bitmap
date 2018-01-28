@@ -29,6 +29,10 @@ class BitmapEditor
     init( [@bit_map.first.size, @bit_map.size] )
   end
 
+  def vertical args
+    show()
+  end
+
   def show args = []
     puts "\n"
     @bit_map.each do |bits|
