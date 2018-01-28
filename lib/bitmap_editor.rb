@@ -1,5 +1,7 @@
 class BitmapEditor
 
+  attr_reader :bit_map
+
   def run(file)
     return puts "please provide correct file" if file.nil? || !File.exists?(file)
 
@@ -12,5 +14,9 @@ class BitmapEditor
           puts 'unrecognised command :('
       end
     end
+  end
+
+  def init args
+    @bit_map = [[],[]]
   end
 end
