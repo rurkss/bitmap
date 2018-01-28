@@ -30,6 +30,8 @@ class BitmapEditor
   end
 
   def vertical args
+    x, y1, y2, color = args
+    (y1..y2).to_a.each{|y| color([x,y,color])}
     show()
   end
 
