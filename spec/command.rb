@@ -30,4 +30,16 @@ RSpec.describe BitmapEditor do
     end
   end
 
+  describe "#clear" do
+
+    context "command 'C'" do
+
+      it "reset bits to 'O'" do
+        b_editor.color([2,3,"Z"])
+        b_editor.clear()
+        expect(subject.bit_map.flatten.uniq).to match_array(["O"])
+      end
+    end
+  end
+
 end

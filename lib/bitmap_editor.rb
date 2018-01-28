@@ -24,4 +24,7 @@ class BitmapEditor
     x, y, color = args
     @bit_map[y.to_i-1][x.to_i-1] = color
   end
+
+  def clear args = []
+  end
 end
