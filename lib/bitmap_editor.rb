@@ -17,6 +17,6 @@ class BitmapEditor
   end
 
   def init args
-    @bit_map = [[],[]]
+    @bit_map = Array.new(args.last.to_i) { Array.new(args.first.to_i, "O") }
   end
 end
