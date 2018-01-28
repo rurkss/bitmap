@@ -2,17 +2,22 @@ class BitmapEditor
 
   attr_reader :bit_map
 
+  COMMANDS = {
+    "I" => "init",
+    "L" => "color",
+    "V" => "vertical",
+    "H" => "horizontal",
+    "C" => "clear",
+    "S" => "show"
+  }
+
   def run(file)
     return puts "please provide correct file" if file.nil? || !File.exists?(file)
 
     File.open(file).each do |line|
-      line = line.chomp
-      case line
-      when 'S'
-          puts "There is no image"
-      else
-          puts 'unrecognised command :('
-      end
+      commands = line.chomp.split(/\s+/)
+      command_method = commands.slice!(0)
+      send(COMMANDS[command_method], commands)
     end
   end
 
