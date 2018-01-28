@@ -19,4 +19,7 @@ class BitmapEditor
   def init args
     @bit_map = Array.new(args.last.to_i) { Array.new(args.first.to_i, "O") }
   end
+
+  def color args
+  end
 end

@@ -17,4 +17,17 @@ RSpec.describe BitmapEditor do
       end
     end
   end
+
+  describe "#color" do
+
+    context "command 'L'" do
+
+      it "set color 'Z' to 2,3" do
+        b_editor.color([2,3,"Z"])
+        expect(subject.bit_map[2][1]).to eq "Z"
+        expect(subject.bit_map.flatten.uniq).to match_array(["O", "Z"])
+      end
+    end
+  end
+
 end
